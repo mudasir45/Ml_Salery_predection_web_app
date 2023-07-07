@@ -1,5 +1,7 @@
 from django.shortcuts import render
-import model.ml
+from . import ml 
+import numpy as np
+import pandas as pd
 
 # Create your views here.
 def home(request):
@@ -9,7 +11,9 @@ def home(request):
         empLevel = request.POST.get('empLevel')
         exp = request.POST.get('exp')
 
-        
+        x = np.array([[country, education, exp, empLevel]])
+
+        test_df = pd.DataFrame(x, columns=['Country', 'EdLevel', 'YearsCodePro', 'Employment'])
 
     return render(request, 'index.html')
 
