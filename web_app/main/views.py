@@ -26,6 +26,7 @@ def home(request):
         df['Country'] = le_country.transform(df['Country'])
         df['Employment'] = le_emp.transform(df['Employment'])
         df = df.astype(float)
+
         
         salary = regressor.predict(df)
         salary = f"${salary[0]:.2f}"
